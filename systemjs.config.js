@@ -12,7 +12,8 @@
     'angular2-in-memory-web-api': '/node_modules/angular2-in-memory-web-api',
     'rxjs':                       '/node_modules/rxjs',
     'plugin-typescript':          '/node_modules/plugin-typescript',
-    'typescript':                 '/node_modules/typescript'
+    'typescript':                 '/node_modules/typescript',
+    'stocks':                    '//localhost:8080'
   };
 
   // packages tells the System loader how to load when no filename and/or no extension
@@ -21,7 +22,8 @@
     'rxjs':                       { defaultExtension: 'js' },
     'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
     'typescript'                : { main: 'lib/typescript.js', defaultExtension: 'js' },
-    'plugin-typescript'         : { main: 'lib/plugin.js', defaultExtension: 'js'}
+    'plugin-typescript'         : { main: 'lib/plugin.js', defaultExtension: 'js'},
+    'stocks'                    : { defaultExtension: "js" }
   };
 
   var ngPackageNames = [
@@ -62,9 +64,20 @@
         'npm:': '/node_modules/'
     },
     map: map,
-    packages: packages
+    packages: packages,
+    meta: {
+      '*': {
+            authorization: true
+      },
+      'stocks': {
+            format: "cjs",
+            deps: [],
+            crossorigin: 'anonymous'
+      }
+    }
   };
 
   System.config(config);
+  System.import("stocks/components/app.module.js");
 
 })(this);
