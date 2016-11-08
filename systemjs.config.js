@@ -23,7 +23,7 @@
     'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
     'typescript'                : { main: 'lib/typescript.js', defaultExtension: 'js' },
     'plugin-typescript'         : { main: 'lib/plugin.js', defaultExtension: 'js'},
-    'stocks'                    : { defaultExtension: "js" }
+    'stocks'                    : { main: 'app.module.js', defaultExtension: "js" }
   };
 
   var ngPackageNames = [
@@ -69,10 +69,14 @@
       '*': {
             authorization: true
       },
+      "*.css":{
+          loader: "css"
+      },
       'stocks': {
             format: "cjs",
-            deps: [],
-            crossorigin: 'anonymous'
+            deps: ["/css/stocks.css"],
+            crossorigin: 'anonymous',
+            exports:'stocks'
       }
     }
   };
