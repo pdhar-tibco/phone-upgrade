@@ -12,6 +12,8 @@ var phone_service_1 = require('./core/phone/phone.service');
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var http_1 = require('@angular/http');
+var app_module_1 = require('stocks/client/components/app.module');
+console.log("[app.module.ts]");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -20,7 +22,9 @@ var AppModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 http_1.HttpModule,
+                app_module_1.AppModule
             ],
+            declarations: [],
             providers: [phone_service_1.Phone],
         }), 
         __metadata('design:paramtypes', [])

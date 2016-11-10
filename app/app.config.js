@@ -1,4 +1,5 @@
 'use strict';
+console.log("[app.config.ts]");
 angular.
     module('phonecatApp').
     config(['$locationProvider', '$routeProvider',
@@ -11,7 +12,10 @@ angular.
             when('/phones/:phoneId', {
             template: '<phone-detail></phone-detail>'
         }).
-            otherwise('/phones');
+            when('/stocks', {
+            template: '<app></app>'
+        }).
+            otherwise('/stocks');
     }
 ]);
 //# sourceMappingURL=app.config.js.map

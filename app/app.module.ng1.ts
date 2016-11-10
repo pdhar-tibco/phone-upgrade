@@ -1,5 +1,9 @@
 'use strict';
 
+console.log("[app.module.ng1.ts]");
+// Create a new stocks module
+var myModule = angular.module('stocks', []);
+
 // Define  the 'phonecatApp' Angular 1 module
 
 angular.module('phonecatApp',[
@@ -7,5 +11,10 @@ angular.module('phonecatApp',[
     'ngRoute',
     'core',
     'phoneDetail',
-    'phoneList'
-])
+    'phoneList',
+    'stocks'
+]);
+
+
+
+

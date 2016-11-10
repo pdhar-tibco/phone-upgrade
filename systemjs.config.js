@@ -23,7 +23,11 @@
     'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
     'typescript'                : { main: 'lib/typescript.js', defaultExtension: 'js' },
     'plugin-typescript'         : { main: 'lib/plugin.js', defaultExtension: 'js'},
-    'stocks'                    : { main: 'app.module.js', defaultExtension: "js" }
+    'stocks'                    : { 
+          main: 'client/components/app.module.js',
+          format: 'cjs', 
+          exports: 'stocks',
+          defaultExtension: "js" }
   };
 
   var ngPackageNames = [
@@ -59,9 +63,10 @@
   //packages['@angular/router'] = { main: 'index.js', defaultExtension: 'js' };
 
   var config = {
-    path: {
+    paths: {
         // paths serve as alias
-        'npm:': '/node_modules/'
+        'npm:': '/node_modules/',
+        'stocks':'//localhost:8080'
     },
     map: map,
     packages: packages,
@@ -71,17 +76,25 @@
       },
       "*.css":{
           loader: "css"
-      },
-      'stocks': {
-            format: "cjs",
-            deps: ["/css/stocks.css"],
-            crossorigin: 'anonymous',
-            exports:'stocks'
       }
+      // not required for cross origin loads
+      // as long as "map" section "stocks" point to "//server:port/path"
+      // ,
+      // 'stocks': {
+      //       format: "cjs",
+      //       deps: [],
+      //       crossorigin: 'anonymous',
+      //       exports:'stocks'
+      // }
     }
   };
 
   System.config(config);
-  System.import("stocks/components/app.module.js");
+// No need to do special import as it is done 
+// from app.module.ts using import { AppModule as stocks } from 'stocks/client/components/app.module';
+// "stocks" is mapped by the SystemJS loader
+//   System.import("stocks").then(function(m) {
+//     // do something with 'm'
+// });;
 
 })(this);
