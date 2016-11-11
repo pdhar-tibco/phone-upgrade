@@ -1,26 +1,38 @@
 import { Phone } from './core/phone/phone.service';
 import { UpgradeAdapter } from '@angular/upgrade';
-declare var angular: any;
+import { IAngularStatic } from '@types/angular';
+declare var angular: IAngularStatic;
 import { AppModule } from './app.module';
 
 import { App as StocksApp } from 'stocks/client/components/app';
-import {StocksService} from 'stocks/client/services/stocks';
+import { Dashboard } from "stocks/client/components/dashboard";
+import { Manage } from "stocks/client/components/manage";
+import { StocksService } from 'stocks/client/services/stocks';
+import { appRouting as stockRoutes } from 'stocks/client/components/app.routing';
 console.log("[main.ts]");
-let upgradeAdapter = new UpgradeAdapter(AppModule);
-angular.module('core.phone').factory('phone',upgradeAdapter.downgradeNg2Provider(Phone));
+
+var upgradeAdapter = new UpgradeAdapter(AppModule);
+
+angular.module('core.phone').factory('phone', upgradeAdapter.downgradeNg2Provider(Phone));
 
 angular.module('stocks') // app module in app.module.ng1.ts
-        .directive(
-            'app', // template selector
-            upgradeAdapter.downgradeNg2Component(StocksApp) as angular.IDirectiveFactory
-);
-angular.module('stocks').service('stockservice',upgradeAdapter.downgradeNg2Provider(StocksService));
-// angular.module('phoneList')
-//   .directive(
-//     'phoneList',
-//     upgradeAdapter.downgradeNg2Component(PhoneListComponent) as angular.IDirectiveFactory
-//   );
-// angular.module('stocks').controller('initCtrl', ['stockservice', function(stockservice){
-//     stockservice.configure("//localhost:8080");
-// }]);
-upgradeAdapter.bootstrap(document.documentElement, ['phonecatApp']);
+    .directive(
+    'dashboard', // template selector
+    upgradeAdapter.downgradeNg2Component(Dashboard) as angular.IDirectiveFactory
+    );
+
+angular.module('stocks') // app module in app.module.ng1.ts
+    .directive(
+    'manage', // template selector
+    upgradeAdapter.downgradeNg2Component(Manage) as angular.IDirectiveFactory
+    );
+
+angular.module('stocks') // app module in app.module.ng1.ts
+    .directive(
+    'app', // template selector
+    upgradeAdapter.downgradeNg2Component(StocksApp) as angular.IDirectiveFactory
+    );
+
+angular.module('stocks').service('stockservice', upgradeAdapter.downgradeNg2Provider(StocksService));
+
+upgradeAdapter.bootstrap(document.documentElement, ['phonecatApp'], { strictDi: true });

@@ -13,7 +13,8 @@
     'rxjs':                       '/node_modules/rxjs',
     'plugin-typescript':          '/node_modules/plugin-typescript',
     'typescript':                 '/node_modules/typescript',
-    'stocks':                    '//localhost:8080'
+    'stocks':                    '//localhost:8080',
+    css: '/node_modules/systemjs-plugin-css/css.js'
   };
 
   // packages tells the System loader how to load when no filename and/or no extension
@@ -96,5 +97,8 @@
 //   System.import("stocks").then(function(m) {
 //     // do something with 'm'
 // });;
+// No need to import css as it is getting imported
+// when you import the StocksModule
+// System.import("stocks/client/css/app.css");
 
 })(this);
