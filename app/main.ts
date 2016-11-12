@@ -1,6 +1,7 @@
+import { RouterModule } from '@angular/router';
 import { Phone } from './core/phone/phone.service';
 import { UpgradeAdapter } from '@angular/upgrade';
-import { IAngularStatic } from '@types/angular';
+import { IAngularStatic,IServiceProvider } from '@types/angular';
 declare var angular: IAngularStatic;
 import { AppModule } from './app.module';
 
@@ -8,7 +9,7 @@ import { App as StocksApp } from 'stocks/client/components/app';
 import { Dashboard } from "stocks/client/components/dashboard";
 import { Manage } from "stocks/client/components/manage";
 import { StocksService } from 'stocks/client/services/stocks';
-import { appRouting as stockRoutes } from 'stocks/client/components/app.routing';
+// import { appRouting as stockRoutes,appRoutes } from 'stocks/client/components/app.routing';
 console.log("[main.ts]");
 
 var upgradeAdapter = new UpgradeAdapter(AppModule);
@@ -34,5 +35,4 @@ angular.module('stocks') // app module in app.module.ng1.ts
     );
 
 angular.module('stocks').service('stockservice', upgradeAdapter.downgradeNg2Provider(StocksService));
-
 upgradeAdapter.bootstrap(document.documentElement, ['phonecatApp'], { strictDi: true });

@@ -1,12 +1,15 @@
+import { IAngularStatic } from '@types/angular';
+import { Dashboard } from 'stocks/client/components/dashboard';
 'use strict';
 console.log("[app.config.ts]");
+declare var angular: IAngularStatic;
 angular.
   module('phonecatApp').
   config(['$locationProvider' ,'$routeProvider',
     function config(
       $locationProvider: angular.ILocationProvider , 
       $routeProvider: angular.route.IRouteProvider) {
-      $locationProvider.hashPrefix('!');
+      // $locationProvider.hashPrefix('!');
 
       $routeProvider.
         when('/phones', {
@@ -17,6 +20,12 @@ angular.
         }).
         when('/stocks', {
           template: '<app></app>'
+        }).
+        when('/Dashboard', {
+          template: '<dashboard></dashboard>'
+        }).
+        when('/Manage', {
+          template: '<manage></manage>'
         }).
         otherwise('/stocks');
     }

@@ -6,6 +6,7 @@ var app_1 = require('stocks/client/components/app');
 var dashboard_1 = require("stocks/client/components/dashboard");
 var manage_1 = require("stocks/client/components/manage");
 var stocks_1 = require('stocks/client/services/stocks');
+// import { appRouting as stockRoutes,appRoutes } from 'stocks/client/components/app.routing';
 console.log("[main.ts]");
 var upgradeAdapter = new upgrade_1.UpgradeAdapter(app_module_1.AppModule);
 angular.module('core.phone').factory('phone', upgradeAdapter.downgradeNg2Provider(phone_service_1.Phone));

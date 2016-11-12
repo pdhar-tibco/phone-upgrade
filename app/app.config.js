@@ -1,10 +1,11 @@
+"use strict";
 'use strict';
 console.log("[app.config.ts]");
 angular.
     module('phonecatApp').
     config(['$locationProvider', '$routeProvider',
     function config($locationProvider, $routeProvider) {
-        $locationProvider.hashPrefix('!');
+        // $locationProvider.hashPrefix('!');
         $routeProvider.
             when('/phones', {
             template: '<phone-list></phone-list>'
@@ -14,6 +15,12 @@ angular.
         }).
             when('/stocks', {
             template: '<app></app>'
+        }).
+            when('/Dashboard', {
+            template: '<dashboard></dashboard>'
+        }).
+            when('/Manage', {
+            template: '<manage></manage>'
         }).
             otherwise('/stocks');
     }
