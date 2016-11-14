@@ -6,13 +6,16 @@ declare var angular: IAngularStatic;
 import { AppModule } from './app.module';
 
 import { App as StocksApp } from 'stocks/client/components/app';
+import { Summary } from 'stocks/client/components/summary';
 import { Dashboard } from "stocks/client/components/dashboard";
 import { Manage } from "stocks/client/components/manage";
 import { StocksService } from 'stocks/client/services/stocks';
 // import { appRouting as stockRoutes,appRoutes } from 'stocks/client/components/app.routing';
 console.log("[main.ts]");
 
-var upgradeAdapter = new UpgradeAdapter(AppModule);
+var upgradeAdapter = new UpgradeAdapter(AppModule,{
+    useDebug: true,
+    useJit: false });
 
 angular.module('core.phone').factory('phone', upgradeAdapter.downgradeNg2Provider(Phone));
 
@@ -30,9 +33,16 @@ angular.module('stocks') // app module in app.module.ng1.ts
 
 angular.module('stocks') // app module in app.module.ng1.ts
     .directive(
-    'app', // template selector
+    'summary', // template selector
+    upgradeAdapter.downgradeNg2Component(Summary) as angular.IDirectiveFactory
+    );
+
+angular.module('stocks') // app module in app.module.ng1.ts
+    .directive(
+    'stocks', // template selector
     upgradeAdapter.downgradeNg2Component(StocksApp) as angular.IDirectiveFactory
     );
 
 angular.module('stocks').service('stockservice', upgradeAdapter.downgradeNg2Provider(StocksService));
+
 upgradeAdapter.bootstrap(document.documentElement, ['phonecatApp'], { strictDi: true });

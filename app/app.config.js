@@ -14,13 +14,16 @@ angular.
             template: '<phone-detail></phone-detail>'
         }).
             when('/stocks', {
-            template: '<app></app>'
+            template: '<stocks></stocks>'
         }).
-            when('/Dashboard', {
+            when('/stocks/Dashboard', {
             template: '<dashboard></dashboard>'
         }).
-            when('/Manage', {
+            when('/stocks/Manage', {
             template: '<manage></manage>'
+        }).
+            when('/stocks/Summary', {
+            template: '<summary></summary>'
         }).
             otherwise('/stocks');
     }
