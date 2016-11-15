@@ -1,4 +1,4 @@
-// import { StocksModule } from 'stocks/client/components/app.module';
+import { StocksModule } from 'stocks/client/components/app.module';
 // import { appRouting } from 'stocks/client/components/app.routing';
 import { App } from 'stocks/client/components/app';
 import { Manage } from 'stocks/client/components/manage';
@@ -10,8 +10,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import  StocksChildAppModule  from 'stocks/client/components/app.module.child';
-import  { appChildRouting } from 'stocks/client/components/app.routing.child';
+// import  StocksChildAppModule  from 'stocks/client/components/app.module.child';
+// import  { appChildRouting } from 'stocks/client/components/app.routing.child';
 import {APP_BASE_HREF} from '@angular/common';
 
 var cssContent = require('stocks/client/css/app.css');
@@ -23,36 +23,42 @@ console.log("[app.module.ts]");
         HttpModule,
         FormsModule,
         RouterModule,
+        StocksModule,
         // appRouting,
         // appChildRouting,
-        StocksChildAppModule,
+        // StocksChildAppModule,
         RouterModule.forRoot([
-            {
-                path: "#/stocks",
-                // loadChildren: "stocks/client/components/app.module.child",
-                component: App,
-            },
-            {
-                path: "#/Dashboard",
-                component: Dashboard
-            },
-            {
-                path: "#/Manage",
-                component: Manage
-            },
-            {
-                path: "#/",
-                redirectTo: "Dashboard",
-                pathMatch: "full"
-            },
-        ])
+            // {
+            //     path: "stocks",
+            //     // loadChildren: "stocks/client/components/app.module.child",
+            //     component: App,
+            // },
+            // {
+            //     path: "Dashboard",
+            //     component: Dashboard
+            // },
+            // {
+            //     path: "Manage",
+            //     component: Manage
+            // },
+            // {
+            //     path: "",
+            //     redirectTo: "Dashboard",
+            //     pathMatch: "full"
+            // },
+        ],{
+            useHash:false,
+            initialNavigation: true,
+            enableTracing:true
+
+        })
         
     ],
     declarations:[
     ],
     providers: [ 
         Phone,
-        {provide: APP_BASE_HREF, useValue: '/#/stocks'}
+        {provide: APP_BASE_HREF, useValue: '/#/stocks'},
     ],
     bootstrap:[
         App

@@ -8,18 +8,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-// import { StocksModule } from 'stocks/client/components/app.module';
+var app_module_1 = require('stocks/client/components/app.module');
 // import { appRouting } from 'stocks/client/components/app.routing';
 var app_1 = require('stocks/client/components/app');
-var manage_1 = require('stocks/client/components/manage');
-var dashboard_1 = require('stocks/client/components/dashboard');
 var phone_service_1 = require('./core/phone/phone.service');
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var http_1 = require('@angular/http');
 var forms_1 = require('@angular/forms');
 var router_1 = require('@angular/router');
-var app_module_child_1 = require('stocks/client/components/app.module.child');
+// import  StocksChildAppModule  from 'stocks/client/components/app.module.child';
+// import  { appChildRouting } from 'stocks/client/components/app.routing.child';
 var common_1 = require('@angular/common');
 var cssContent = require('stocks/client/css/app.css');
 console.log("[app.module.ts]");
@@ -33,34 +32,20 @@ var AppModule = (function () {
                 http_1.HttpModule,
                 forms_1.FormsModule,
                 router_1.RouterModule,
+                app_module_1.StocksModule,
                 // appRouting,
                 // appChildRouting,
-                app_module_child_1.default,
-                router_1.RouterModule.forRoot([
-                    {
-                        path: "#/stocks",
-                        // loadChildren: "stocks/client/components/app.module.child",
-                        component: app_1.App,
-                    },
-                    {
-                        path: "#/Dashboard",
-                        component: dashboard_1.Dashboard
-                    },
-                    {
-                        path: "#/Manage",
-                        component: manage_1.Manage
-                    },
-                    {
-                        path: "#/",
-                        redirectTo: "Dashboard",
-                        pathMatch: "full"
-                    },
-                ])
+                // StocksChildAppModule,
+                router_1.RouterModule.forRoot([], {
+                    useHash: false,
+                    initialNavigation: true,
+                    enableTracing: true
+                })
             ],
             declarations: [],
             providers: [
                 phone_service_1.Phone,
-                { provide: common_1.APP_BASE_HREF, useValue: '/#/stocks' }
+                { provide: common_1.APP_BASE_HREF, useValue: '/#/stocks' },
             ],
             bootstrap: [
                 app_1.App
