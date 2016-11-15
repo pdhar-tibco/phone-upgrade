@@ -1,7 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { Phone } from './core/phone/phone.service';
 import { UpgradeAdapter } from '@angular/upgrade';
-import { IAngularStatic,IServiceProvider } from '@types/angular';
+import { IAngularStatic, IServiceProvider } from '@types/angular';
 declare var angular: IAngularStatic;
 import { AppModule } from './app.module';
 
@@ -13,9 +13,10 @@ import { StocksService } from 'stocks/client/services/stocks';
 // import { appRouting as stockRoutes,appRoutes } from 'stocks/client/components/app.routing';
 console.log("[main.ts]");
 
-var upgradeAdapter = new UpgradeAdapter(AppModule,{
+var upgradeAdapter = new UpgradeAdapter(AppModule, {
     useDebug: true,
-    useJit: false });
+    useJit: false
+});
 
 angular.module('core.phone').factory('phone', upgradeAdapter.downgradeNg2Provider(Phone));
 
@@ -43,6 +44,12 @@ angular.module('stocks') // app module in app.module.ng1.ts
     upgradeAdapter.downgradeNg2Component(StocksApp) as angular.IDirectiveFactory
     );
 
-angular.module('stocks').service('stockservice', upgradeAdapter.downgradeNg2Provider(StocksService));
+angular.module('stocks')
+    .service('stockservice',
+    upgradeAdapter.downgradeNg2Provider(StocksService));
 
-upgradeAdapter.bootstrap(document.documentElement, ['phonecatApp'], { strictDi: true });
+upgradeAdapter
+    .bootstrap(document.documentElement, ['phonecatApp'], { strictDi: true })
+    .ready(function() {
+        console.log('bootstrapped!');
+    });

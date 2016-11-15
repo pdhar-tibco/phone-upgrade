@@ -23,8 +23,12 @@ var common_1 = require('@angular/common');
 var cssContent = require('stocks/client/css/app.css');
 console.log("[app.module.ts]");
 var AppModule = (function () {
-    function AppModule() {
+    function AppModule(router) {
+        this.router = router;
     }
+    AppModule.prototype.ngOnInit = function () {
+        this.router.initialNavigation();
+    };
     AppModule = __decorate([
         core_1.NgModule({
             imports: [
@@ -51,7 +55,7 @@ var AppModule = (function () {
                 app_1.App
             ]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.Router])
     ], AppModule);
     return AppModule;
 }());

@@ -9,7 +9,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router,RouterModule } from '@angular/router';
 // import  StocksChildAppModule  from 'stocks/client/components/app.module.child';
 // import  { appChildRouting } from 'stocks/client/components/app.routing.child';
 import {APP_BASE_HREF} from '@angular/common';
@@ -64,4 +64,11 @@ console.log("[app.module.ts]");
         App
     ]
 })
-export class AppModule {}
+export class AppModule {
+  
+  constructor(private router: Router) {}
+  
+  ngOnInit() {
+    this.router.initialNavigation();
+  }
+}
