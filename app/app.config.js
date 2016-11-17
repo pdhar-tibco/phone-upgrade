@@ -1,31 +1,31 @@
 "use strict";
-'use strict';
+"use strict";
 console.log("[app.config.ts]");
 angular.
-    module('phonecatApp').
-    config(['$locationProvider', '$routeProvider',
+    module("phonecatApp").
+    config(["$locationProvider", "$routeProvider",
     function config($locationProvider, $routeProvider) {
         // $locationProvider.hashPrefix('!');
         $routeProvider.
-            when('/phones', {
-            template: '<phone-list></phone-list>'
+            when("/phones", {
+            template: "<phone-list></phone-list>"
         }).
-            when('/phones/:phoneId', {
-            template: '<phone-detail></phone-detail>'
+            when("/phones/:phoneId", {
+            template: "<phone-detail></phone-detail>"
         }).
-            when('/stocks', {
-            template: '<stocks></stocks>'
+            when("/stocks", {
+            template: "<stocks></stocks>"
         }).
-            when('/stocks/Dashboard', {
-            template: '<dashboard></dashboard>'
+            when("/stocks/Dashboard", {
+            template: "<dashboard></dashboard>"
         }).
-            when('/stocks/Manage', {
-            template: '<manage></manage>'
+            when("/stocks/Manage", {
+            template: "<manage></manage>"
         }).
-            when('/stocks/Summary', {
-            template: '<summary></summary>'
+            when("/stocks/Summary", {
+            template: "<summary></summary>"
         }).
-            otherwise('/stocks');
+            otherwise("/stocks/Dashboard");
     }
 ]);
 //# sourceMappingURL=app.config.js.map

@@ -1,35 +1,35 @@
-import { IAngularStatic } from '@types/angular';
-import { Dashboard } from 'stocks/client/components/dashboard';
-'use strict';
+import { IAngularStatic } from "@types/angular";
+import { Dashboard } from "stocks/client/components/dashboard";
+"use strict";
 console.log("[app.config.ts]");
 declare var angular: IAngularStatic;
 angular.
-  module('phonecatApp').
-  config(['$locationProvider' ,'$routeProvider',
+  module("phonecatApp").
+  config(["$locationProvider" , "$routeProvider",
     function config(
-      $locationProvider: angular.ILocationProvider , 
+      $locationProvider: angular.ILocationProvider ,
       $routeProvider: angular.route.IRouteProvider) {
       // $locationProvider.hashPrefix('!');
 
       $routeProvider.
-        when('/phones', {
-          template: '<phone-list></phone-list>'
+        when("/phones", {
+          template: "<phone-list></phone-list>"
         }).
-        when('/phones/:phoneId', {
-          template: '<phone-detail></phone-detail>'
+        when("/phones/:phoneId", {
+          template: "<phone-detail></phone-detail>"
         }).
-        when('/stocks', {
-          template: '<stocks></stocks>'
+        when("/stocks", {
+          template: "<stocks></stocks>"
         }).
-        when('/stocks/Dashboard', {
-          template: '<dashboard></dashboard>'
+        when("/stocks/Dashboard", {
+          template: "<dashboard></dashboard>"
         }).
-        when('/stocks/Manage', {
-          template: '<manage></manage>'
+        when("/stocks/Manage", {
+          template: "<manage></manage>"
         }).
-        when('/stocks/Summary', {
-          template: '<summary></summary>'
+        when("/stocks/Summary", {
+          template: "<summary></summary>"
         }).
-        otherwise('/stocks');
+        otherwise("/stocks/Dashboard");
     }
   ]);
