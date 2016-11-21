@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+// declare var angular: angular.IAngularStatic;
 var core_1 = require("@angular/core");
 var phone_service_1 = require("./../core/phone/phone.service");
 var PhoneDetailController = (function () {
@@ -31,6 +32,7 @@ var PhoneDetailController = (function () {
     PhoneDetailController.$inject = ["$routeParams", "phone"];
     return PhoneDetailController;
 }());
+exports.PhoneDetailController = PhoneDetailController;
 var PhoneDetailComponent = (function () {
     function PhoneDetailComponent($routParams, phone) {
         var _this = this;
@@ -55,13 +57,28 @@ var PhoneDetailComponent = (function () {
     return PhoneDetailComponent;
 }());
 exports.PhoneDetailComponent = PhoneDetailComponent;
-// Register `phoneDetail` component, along with its associated controller and template
-angular.
-    module("phoneDetail").
-    component("phoneDetail", {
-    templateUrl: "phone-detail/phone-detail.template.html",
-    controller: PhoneDetailController
-});
+// // Register `phoneDetail` component, along with its associated controller and template
+// export const PhoneDetailModule = angular.  module("phoneDetail");
+// PhoneDetailModule.component("phoneDetail", {
+//     templateUrl: "phone-detail/phone-detail.template.html",
+//     controller: PhoneDetailController
+//     // controller: ['$routeParams', 'Phone',
+//     //   function PhoneDetailController($routeParams, Phone) {
+//     //     var self = this;
+//     //     self.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
+//     //       self.setImage(phone.images[0]);
+//     //     });
+//     //     self.setImage = function setImage(imageUrl) {
+//     //       self.mainImageUrl = imageUrl;
+//     //     };
+//     //   }
+//     // ]
+//   });
+// PhoneDetailModule.config(($routeProvider) => {
+//       $routeProvider.when("/phones/:phoneId", {
+//           template: "<phone-detail></phone-detail>"
+//         });
+// });
 // angular
 //   .module("phoneDetail")
 //   .directive("phoneDetail",

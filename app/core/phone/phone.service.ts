@@ -1,9 +1,9 @@
 "use strict";
-
+import * as angular from "angular";
 import {Injectable} from "@angular/core";
 import {Http, Response} from "@angular/http";
 import {Observable} from "rxjs/Rx";
-declare var angular: angular.IAngularStatic;
+// declare var angular: angular.IAngularStatic;
 import { downgradeInjectable } from "@angular/upgrade/static";
 
 import "rxjs/add/operator/map";
@@ -31,8 +31,8 @@ export interface PhoneData {
   images: string[];
 }
 
-angular.module("core.phone")
-    .factory("phone", downgradeInjectable(Phone));
+// export const CorePhoneModule = angular.module("core.phone");
+// CorePhoneModule.factory("phone", downgradeInjectable(Phone));
 
 // angular.
 //   module('core.phone').

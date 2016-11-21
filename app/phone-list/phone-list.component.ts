@@ -1,11 +1,12 @@
+import * as angular from "angular";
 import { Component } from "@angular/core";
 import { PhoneData, Phone } from "./../core/phone/phone.service";
 
 
-declare var angular: angular.IAngularStatic;
+// declare var angular: angular.IAngularStatic;
 import { downgradeComponent } from "@angular/upgrade/static";
 
-class PhoneListController {
+export class PhoneListController {
   phones: PhoneData[];
   orderProp: string;
   query: string;
@@ -71,20 +72,23 @@ export class PhoneListComponent {
 
 }
 // Register `phoneList` component, along with its associated controller and template
-angular.
-  module("phoneList").
-  component("phoneList", {
-    templateUrl: "phone-list/phone-list.template.html",
-    controller: PhoneListController
-    // controller: ['Phone',
-    //   function PhoneListController(Phone) {
-    //     this.phones = Phone.query();
-    //     this.orderProp = 'age';
-    //   }
-    // ]
-  });
+// export const PhoneListModule = angular.module("phoneList");
+// PhoneListModule.component("phoneList", {
+//     templateUrl: "phone-list/phone-list.template.html",
+//     controller: PhoneListController
+//     // controller: ['Phone',
+//     //   function PhoneListController(Phone) {
+//     //     this.phones = Phone.query();
+//     //     this.orderProp = 'age';
+//     //   }
+//     // ]
+//   });
 
-
+// PhoneListModule.config(($routeProvider) => {
+//       $routeProvider.when("/phones", {
+//           template: "<phone-list></phone-list>"
+//         });
+// });
 
 // angular.
 //   module("phoneList")

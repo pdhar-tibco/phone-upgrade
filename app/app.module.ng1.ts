@@ -1,25 +1,36 @@
-import { PhoneListComponent } from "./phone-list/phone-list.component";
-import { PhoneDetailComponent } from "./phone-detail/phone-detail.component";
-declare var angular: angular.IAngularStatic;
+import * as angular from "angular";
+// import { PhoneListComponent, PhoneListModule } from "./phone-list/phone-list.component";
+// import { PhoneDetailComponent, PhoneDetailModule } from "./phone-detail/phone-detail.component";
+import {PhoneListModule} from "./phone-list/phone-list.module";
+import {PhoneDetailModule} from "./phone-detail/phone-detail.module";
+import {CoreModule} from "./core/core.module";
+import {NgModule} from "@angular/core";
+
+// declare var angular: angular.IAngularStatic;
 
 
 "use strict";
 console.log("[app.module.ng1.ts]");
 // // Create a new stocks module
-let myModule = angular.module("stocks", []);
+// let myModule = angular.module("stocks", []);
 
 
 // Define  the 'phonecatApp' Angular 1 module
 
-angular.module("phonecatApp", [
+export const PhonecatAppModule = angular.module("phonecatApp", [
     "ngAnimate",
     "ngRoute",
-    "core",
-    "phoneDetail",
-    "phoneList",
-    "stocks"
+    CoreModule.name,
+    PhoneDetailModule.name,
+    PhoneListModule.name,
+    // "stocks"
 ]);
+PhonecatAppModule.config(($routeProvider) => {
+    $routeProvider.when("/", { redirectTo: "/phones"});
+});
 
+@NgModule({})
+export class MenuNgModule {}
 
 
 

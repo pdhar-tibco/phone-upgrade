@@ -14,26 +14,25 @@ var http_1 = require("@angular/http");
 var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
 var static_1 = require("@angular/upgrade/static");
-// Phones
-var phone_list_component_1 = require("./phone-list/phone-list.component");
-var phone_detail_component_1 = require("./phone-detail/phone-detail.component");
-var checkmark_pipe_1 = require("./core/checkmark/checkmark.pipe");
 var phone_service_1 = require("./core/phone/phone.service");
 var app_module_child_1 = require("stocks/client/components/app.module.child");
-// import  { appChildRouting } from "stocks/client/components/app.routing.child";
-// import { StocksModule } from "stocks/client/components/app.module";
-// import { appRouting } from "stocks/client/components/app.routing";
-var common_1 = require("@angular/common");
 var cssContent = require("stocks/client/css/app.css");
+// declare var angular: angular.IAngularStatic;
 console.log("[app.module.ts]");
 // This URL handling strategy is custom and application-specific.
 // Using it we can tell the Angular 2 router to handle only URL starting with settings.
 var Ng1Ng2UrlHandlingStrategy = (function () {
     function Ng1Ng2UrlHandlingStrategy() {
     }
+    // constructor(private router: Router) {
+    //     console.log("Found router:" + JSON.stringify(router));
+    // }
     Ng1Ng2UrlHandlingStrategy.prototype.shouldProcessUrl = function (url) {
-        console.log("[strategy.shouldProcessUrl] " + url);
-        return url.toString().startsWith("/#/stocks");
+        var result = url.toString().startsWith("/stocks") ||
+            url.toString().startsWith("/Dashboard") ||
+            url.toString().startsWith("/Manage");
+        console.log("[strategy.shouldProcessUrl] " + url + " " + result);
+        return result;
     };
     Ng1Ng2UrlHandlingStrategy.prototype.extract = function (url) {
         console.log("[strategy.extract] " + url);
@@ -50,6 +49,19 @@ function routeParamsFactory(injector) {
     return injector.get("$routeParams");
 }
 exports.routeParamsFactory = routeParamsFactory;
+var RootComponent = (function () {
+    function RootComponent() {
+    }
+    RootComponent = __decorate([
+        core_1.Component({
+            selector: "root-cmp",
+            template: "\n        <router-outlet></router-outlet>\n        <div class=\"ng-view\"></div>\n    "
+        }), 
+        __metadata('design:paramtypes', [])
+    ], RootComponent);
+    return RootComponent;
+}());
+exports.RootComponent = RootComponent;
 var AppModule = (function () {
     //   constructor(public upgrade:UpgradeModule,÷\public router:Router) {
     function AppModule(router) {
@@ -77,22 +89,24 @@ var AppModule = (function () {
                 // appChildRouting,
                 app_module_child_1.default,
                 router_1.RouterModule.forRoot([], {
-                    useHash: false,
-                    initialNavigation: true,
+                    useHash: true,
+                    initialNavigation: false,
                     enableTracing: true
                 })
             ],
             declarations: [
-                phone_list_component_1.PhoneListComponent,
-                phone_detail_component_1.PhoneDetailComponent,
-                checkmark_pipe_1.CheckmarkPipe
+                RootComponent,
             ],
             providers: [
                 phone_service_1.Phone,
                 // {provide: APP_BASE_HREF, useValue: "/#/stocks"},
-                { provide: common_1.APP_BASE_HREF, useValue: "/#/stocks" },
+                // { provide: APP_BASE_HREF, useValue: "/stocks" },
+                { provide: router_1.UrlHandlingStrategy, useClass: Ng1Ng2UrlHandlingStrategy },
             ],
-            bootstrap: []
+            bootstrap: [
+                // StockApp
+                RootComponent
+            ]
         }), 
         __metadata('design:paramtypes', [router_1.Router])
     ], AppModule);

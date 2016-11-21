@@ -20,6 +20,7 @@ var PhoneListController = (function () {
     PhoneListController.$inject = ["phone"];
     return PhoneListController;
 }());
+exports.PhoneListController = PhoneListController;
 // Ng2 Component
 var PhoneListComponent = (function () {
     // Constructor
@@ -74,12 +75,22 @@ var PhoneListComponent = (function () {
 }());
 exports.PhoneListComponent = PhoneListComponent;
 // Register `phoneList` component, along with its associated controller and template
-angular.
-    module("phoneList").
-    component("phoneList", {
-    templateUrl: "phone-list/phone-list.template.html",
-    controller: PhoneListController
-});
+// export const PhoneListModule = angular.module("phoneList");
+// PhoneListModule.component("phoneList", {
+//     templateUrl: "phone-list/phone-list.template.html",
+//     controller: PhoneListController
+//     // controller: ['Phone',
+//     //   function PhoneListController(Phone) {
+//     //     this.phones = Phone.query();
+//     //     this.orderProp = 'age';
+//     //   }
+//     // ]
+//   });
+// PhoneListModule.config(($routeProvider) => {
+//       $routeProvider.when("/phones", {
+//           template: "<phone-list></phone-list>"
+//         });
+// });
 // angular.
 //   module("phoneList")
 //   .directive(

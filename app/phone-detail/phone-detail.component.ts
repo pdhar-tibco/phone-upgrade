@@ -1,11 +1,12 @@
 // 'use strict';
-declare var angular: angular.IAngularStatic;
+import * as angular from "angular";
+// declare var angular: angular.IAngularStatic;
 import { Component, Inject } from "@angular/core";
 import { downgradeComponent } from "@angular/upgrade/static";
 import { Phone, PhoneData } from "./../core/phone/phone.service";
 
 
-class PhoneDetailController {
+export class PhoneDetailController {
   phone: PhoneData;
   mainImageUrl: string;
   static $inject = ["$routeParams", "phone"];
@@ -51,25 +52,29 @@ export class PhoneDetailComponent {
 
 }
 
-// Register `phoneDetail` component, along with its associated controller and template
-angular.
-  module("phoneDetail").
-  component("phoneDetail", {
-    templateUrl: "phone-detail/phone-detail.template.html",
-    controller: PhoneDetailController
-    // controller: ['$routeParams', 'Phone',
-    //   function PhoneDetailController($routeParams, Phone) {
-    //     var self = this;
-    //     self.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
-    //       self.setImage(phone.images[0]);
-    //     });
+// // Register `phoneDetail` component, along with its associated controller and template
+// export const PhoneDetailModule = angular.  module("phoneDetail");
+// PhoneDetailModule.component("phoneDetail", {
+//     templateUrl: "phone-detail/phone-detail.template.html",
+//     controller: PhoneDetailController
+//     // controller: ['$routeParams', 'Phone',
+//     //   function PhoneDetailController($routeParams, Phone) {
+//     //     var self = this;
+//     //     self.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
+//     //       self.setImage(phone.images[0]);
+//     //     });
 
-    //     self.setImage = function setImage(imageUrl) {
-    //       self.mainImageUrl = imageUrl;
-    //     };
-    //   }
-    // ]
-  });
+//     //     self.setImage = function setImage(imageUrl) {
+//     //       self.mainImageUrl = imageUrl;
+//     //     };
+//     //   }
+//     // ]
+//   });
+// PhoneDetailModule.config(($routeProvider) => {
+//       $routeProvider.when("/phones/:phoneId", {
+//           template: "<phone-detail></phone-detail>"
+//         });
+// });
 
   // angular
   //   .module("phoneDetail")

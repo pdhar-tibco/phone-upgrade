@@ -17,15 +17,20 @@
     "@angular/forms"             : "npm:@angular/forms/bundles/forms.umd.js",
     "@angular/upgrade"           : "npm:@angular/upgrade/bundles/upgrade.umd.js",
     "@angular/upgrade/static"    : "npm:@angular/upgrade/bundles/upgrade-static.umd.js",
-
-    "@types":                     "npm:@types",
-    // "@angular":                   "npm:@angular",
-    "angular-in-memory-web-api":  "npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js",
-    "rxjs":                       "npm:rxjs",
-    "plugin-typescript":          "npm:plugin-typescript",
-    "typescript":                 "npm:typescript",
-    "stocks":                     "//localhost:8080",
-    css:                          "/node_modules/systemjs-plugin-css/css.js",
+    "@types"                     : "npm:@types",
+    "angular-in-memory-web-api"  : "npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js",
+    "rxjs"                       : "npm:rxjs",
+    "plugin-typescript"          : "npm:plugin-typescript",
+    "typescript"                 : "npm:typescript",
+    "jquery"                     : "bower:jquery",
+    "angular"                    : "bower:angular",
+    "angular-animate"            : "bower:angular-animate",
+    "angular-resource"           : "bower:angular-resource",
+    "angular-route"              : "bower:angular-route",
+    "core-js"                    : "npm:core-js",
+    "zone-js"                    : "npm:zone.js",
+    "stocks"                     : "//localhost:8080",
+    css                          : "/node_modules/systemjs-plugin-css/css.js",
   };
 
   // packages tells the System loader how to load when no filename and/or no extension
@@ -34,6 +39,13 @@
     "rxjs"                      : { defaultExtension: "js" },
     "typescript"                : { main: "lib/typescript.js", defaultExtension: "js" },
     "plugin-typescript"         : { main: "lib/plugin.js", defaultExtension: "js"},
+    "jquery"                    : { main: "dist/jquery.js", defaultExtension: "js"},
+    "angular"                   : { main: "index.js" , defaultExtension: "js"},
+    "angular-animate"           : { main: "angular-animate.js" , defaultExtension: "js"},
+    "angular-resource"          : { main: "angular-resource.js" , defaultExtension: "js"},
+    "angular-route"             : { main: "angular-route.js" , defaultExtension: "js"},
+    "core-js"                   : { main: "index.js", defaultExtension: "js"},
+    "zone-js"                   : { main: "dist/zone.js", defaultExtension: "js"},
     "stocks"                    : { 
           main: "client/components/app.module.js",
           format: "cjs", 
@@ -76,8 +88,9 @@
   var config = {
     paths: {
         // paths serve as alias
-        "npm:": "/node_modules/",
-        "stocks":"//localhost:8080"
+        "npm:"           : "/node_modules/",
+        "bower:"         : "/app/bower_components/",
+        // "stocks"         : "//localhost:8080"
     },
     map: map,
     packages: packages,

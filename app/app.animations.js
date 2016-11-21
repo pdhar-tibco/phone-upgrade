@@ -1,7 +1,10 @@
 'use strict';
+import {PhonecatAppModule} from "./app.module.ng1";
 
-angular.
-  module('phonecatApp').
+
+// angular.
+//   module('phonecatApp').
+PhonecatAppModule.
   animation('.phone', function phoneAnimationFactory() {
     return {
       addClass: animateIn,
