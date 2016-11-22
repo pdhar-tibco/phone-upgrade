@@ -24,9 +24,6 @@ console.log("[app.module.ts]");
 var Ng1Ng2UrlHandlingStrategy = (function () {
     function Ng1Ng2UrlHandlingStrategy() {
     }
-    // constructor(private router: Router) {
-    //     console.log("Found router:" + JSON.stringify(router));
-    // }
     Ng1Ng2UrlHandlingStrategy.prototype.shouldProcessUrl = function (url) {
         var result = url.toString().startsWith("/stocks") ||
             url.toString().startsWith("/Dashboard") ||
@@ -63,18 +60,16 @@ var RootComponent = (function () {
 }());
 exports.RootComponent = RootComponent;
 var AppModule = (function () {
-    //   constructor(public upgrade:UpgradeModule,÷\public router:Router) {
-    function AppModule(router) {
+    function AppModule(upgrade, router) {
+        this.upgrade = upgrade;
         this.router = router;
         console.log("[AppModule constructor]");
-        // this.router.initialNavigation();
     }
     AppModule.prototype.ngDoBootstrap = function () {
         console.log("[AppModule ngDoBootstrap]");
     };
     AppModule.prototype.ngOnInit = function () {
         console.log("[AppModule ngOnInit]");
-        //   this.router.initialNavigation();
     };
     AppModule = __decorate([
         core_1.NgModule({
@@ -84,9 +79,6 @@ var AppModule = (function () {
                 forms_1.FormsModule,
                 router_1.RouterModule,
                 static_1.UpgradeModule,
-                // StocksModule,
-                // appRouting,
-                // appChildRouting,
                 app_module_child_1.default,
                 router_1.RouterModule.forRoot([], {
                     useHash: true,
@@ -104,11 +96,10 @@ var AppModule = (function () {
                 { provide: router_1.UrlHandlingStrategy, useClass: Ng1Ng2UrlHandlingStrategy },
             ],
             bootstrap: [
-                // StockApp
                 RootComponent
             ]
         }), 
-        __metadata('design:paramtypes', [router_1.Router])
+        __metadata('design:paramtypes', [static_1.UpgradeModule, router_1.Router])
     ], AppModule);
     return AppModule;
 }());

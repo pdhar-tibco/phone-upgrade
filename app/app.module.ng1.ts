@@ -25,7 +25,7 @@ export const PhonecatAppModule = angular.module("phonecatApp", [
     PhoneListModule.name,
     // "stocks"
 ]);
-PhonecatAppModule.config(($routeProvider) => {
+PhonecatAppModule.config(($routeProvider: angular.route.IRouteProvider) => {
     $routeProvider.when("/", { redirectTo: "/phones"});
 });
 

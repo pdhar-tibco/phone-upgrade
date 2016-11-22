@@ -18,9 +18,7 @@ import { Summary } from "stocks/client/components/summary";
 import { Dashboard } from "stocks/client/components/dashboard";
 import { Phone } from "./core/phone/phone.service";
 import  StocksChildAppModule  from "stocks/client/components/app.module.child";
-// import  { appChildRouting } from "stocks/client/components/app.routing.child";
-// import { StocksModule } from "stocks/client/components/app.module";
-// import { appRouting } from "stocks/client/components/app.routing";
+
 
 import {APP_BASE_HREF} from "@angular/common";
 
@@ -33,9 +31,7 @@ console.log("[app.module.ts]");
 // This URL handling strategy is custom and application-specific.
 // Using it we can tell the Angular 2 router to handle only URL starting with settings.
 export class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
-    // constructor(private router: Router) {
-    //     console.log("Found router:" + JSON.stringify(router));
-    // }
+
   shouldProcessUrl(url: UrlTree): boolean {
       let result = url.toString().startsWith("/stocks") ||
       url.toString().startsWith("/Dashboard") ||
@@ -73,29 +69,8 @@ export class RootComponent {}
         FormsModule,
         RouterModule,
         UpgradeModule,
-        // StocksModule,
-        // appRouting,
-        // appChildRouting,
         StocksChildAppModule,
-        RouterModule.forRoot([
-            // {
-            //     path: "Dashboard",
-            //     component: Dashboard
-            // },
-            // {
-            //     path: "Manage",
-            //     component: Manage
-            // },
-            // {
-            //     path: "Summary",
-            //     component: Summary
-            // },
-            // {
-            //     path: "",
-            //     redirectTo: "StockApp",
-            //     pathMatch: "full"
-            // },
-        ]
+        RouterModule.forRoot([]
         , {
             useHash: true,
             initialNavigation: false,
@@ -107,9 +82,6 @@ export class RootComponent {}
     ],
     declarations: [
         RootComponent,
-        // PhoneListComponent,
-        // PhoneDetailComponent,
-        // CheckmarkPipe,
     ],
     providers: [
         Phone,
@@ -119,18 +91,13 @@ export class RootComponent {}
         // { provide: "$routeParams", useFactory: routeParamsFactory, deps: ["$injector"]},
     ],
     bootstrap: [
-        // StockApp
         RootComponent
     ]
 })
 export class AppModule {
 
-//   constructor(public upgrade:UpgradeModule,÷\public router:Router) {
-  constructor(
-      public router: Router
-      ) {
+  constructor(public upgrade: UpgradeModule, public router: Router) {
       console.log("[AppModule constructor]");
-    // this.router.initialNavigation();
   }
 
   ngDoBootstrap() {
@@ -139,7 +106,6 @@ export class AppModule {
 
   ngOnInit() {
       console.log("[AppModule ngOnInit]");
-    //   this.router.initialNavigation();
   }
 
 }
