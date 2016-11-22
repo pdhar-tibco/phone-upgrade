@@ -52,7 +52,7 @@ var RootComponent = (function () {
     RootComponent = __decorate([
         core_1.Component({
             selector: "root-cmp",
-            template: "\n        <router-outlet></router-outlet>\n        <div class=\"ng-view\"></div>\n    "
+            template: "\n        <div class=\"mdl-layout mdl-js-layout mdl-layout--fixed-header\">\n        <header class=\"mdl-layout__header\">\n        <div class=\"mdl-layout__header-row\">\n            <span class=\"mdl-layout-title\">Ng1 and Ng2 Apps </span>\n            <div class=\"mdl-layout-spacer\"></div>\n            <nav class=\"mdl-navigation mdl-layout--large-screen-only\">\n            <a class=\"mdl-navigation__link\" [routerLink]=\"['/phones']\">Phones(Ng1)</a>\n            <a class=\"mdl-navigation__link\" [routerLink]=\"['/stocks']\">Stocks(Ng2)</a>\n            </nav>\n        </div>\n        </header>\n        <main class=\"mdl-layout__content\" style=\"padding: 20px;\">\n            <router-outlet></router-outlet>\n            <div class=\"ng-view\"></div>\n        </main>\n    </div>\n        \n    "
         }), 
         __metadata('design:paramtypes', [])
     ], RootComponent);
