@@ -17,7 +17,7 @@ import { Manage } from "stocks/client/components/manage";
 import { Summary } from "stocks/client/components/summary";
 import { Dashboard } from "stocks/client/components/dashboard";
 import { Phone } from "./core/phone/phone.service";
-import  StocksChildAppModule  from "stocks/client/components/app.module.child";
+// import  StocksChildAppModule  from "stocks/client/components/app.module.child";
 
 
 import {APP_BASE_HREF} from "@angular/common";
@@ -84,8 +84,13 @@ export class RootComponent {}
         FormsModule,
         RouterModule,
         UpgradeModule,
-        StocksChildAppModule,
-        RouterModule.forRoot([]
+        // StocksChildAppModule,
+        RouterModule.forRoot([
+            {   // Enable lazy loading for the stocks application
+                path: "",
+                loadChildren: "stocks/client/components/app.module.child"
+            }
+        ]
         , {
             useHash: true,
             initialNavigation: false,

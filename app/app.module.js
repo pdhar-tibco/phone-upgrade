@@ -15,7 +15,6 @@ var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
 var static_1 = require("@angular/upgrade/static");
 var phone_service_1 = require("./core/phone/phone.service");
-var app_module_child_1 = require("stocks/client/components/app.module.child");
 var cssContent = require("stocks/client/css/app.css");
 // declare var angular: angular.IAngularStatic;
 console.log("[app.module.ts]");
@@ -79,8 +78,13 @@ var AppModule = (function () {
                 forms_1.FormsModule,
                 router_1.RouterModule,
                 static_1.UpgradeModule,
-                app_module_child_1.default,
-                router_1.RouterModule.forRoot([], {
+                // StocksChildAppModule,
+                router_1.RouterModule.forRoot([
+                    {
+                        path: "",
+                        loadChildren: "stocks/client/components/app.module.child"
+                    }
+                ], {
                     useHash: true,
                     initialNavigation: false,
                     enableTracing: true
