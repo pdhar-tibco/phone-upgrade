@@ -1,5 +1,6 @@
 "use strict";
 import * as angular from "angular";
+import {NgModule} from "@angular/core";
 import {CorePhoneModule} from "../core/phone/phone.module";
 import {PhoneListController} from "./phone-list.component";
 // Define the `phoneList` module
@@ -9,8 +10,12 @@ PhoneListModule.component("phoneList", {
     controller: PhoneListController
   });
 
-PhoneListModule.config(($routeProvider) => {
-      $routeProvider.when("/phones", {
+PhoneListModule.config(($routeProvider: angular.route.IRouteProvider) => {
+      $routeProvider
+      .when("/phones", {
           template: "<phone-list></phone-list>"
         });
 });
+
+@NgModule({})
+export class PhoneListNg2Module {}

@@ -30,15 +30,16 @@ exports.PhonecatAppModule = angular.module("phonecatApp", [
 ]);
 exports.PhonecatAppModule.config(function ($routeProvider) {
     $routeProvider.when("/", { redirectTo: "/phones" });
+    // $routeProvider.when("/", { template: "<phone-list></phone-list>"});
 });
-var MenuNgModule = (function () {
-    function MenuNgModule() {
+var PhonecatAppNg2Module = (function () {
+    function PhonecatAppNg2Module() {
     }
-    MenuNgModule = __decorate([
+    PhonecatAppNg2Module = __decorate([
         core_1.NgModule({}), 
         __metadata('design:paramtypes', [])
-    ], MenuNgModule);
-    return MenuNgModule;
+    ], PhonecatAppNg2Module);
+    return PhonecatAppNg2Module;
 }());
-exports.MenuNgModule = MenuNgModule;
+exports.PhonecatAppNg2Module = PhonecatAppNg2Module;
 //# sourceMappingURL=app.module.ng1.js.map

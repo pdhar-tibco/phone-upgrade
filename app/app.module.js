@@ -8,12 +8,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+"";
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var http_1 = require("@angular/http");
 var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
 var static_1 = require("@angular/upgrade/static");
+// Phones
+// import { PhoneListComponent } from "./phone-list/phone-list.component";
+// import { PhoneDetailComponent } from "./phone-detail/phone-detail.component";
+// import { CheckmarkPipe } from "./core/checkmark/checkmark.pipe";
+var app_module_ng1_1 = require("./app.module.ng1");
+var phone_detail_module_1 = require("./phone-detail/phone-detail.module");
+var phone_list_module_1 = require("./phone-list/phone-list.module");
 var phone_service_1 = require("./core/phone/phone.service");
 var cssContent = require("stocks/client/css/app.css");
 // declare var angular: angular.IAngularStatic;
@@ -22,20 +30,19 @@ console.log("[app.module.ts]");
 // Using it we can tell the Angular 2 router to handle only URL starting with settings.
 var Ng1Ng2UrlHandlingStrategy = (function () {
     function Ng1Ng2UrlHandlingStrategy() {
+        this.serializer = new router_1.DefaultUrlSerializer();
     }
     Ng1Ng2UrlHandlingStrategy.prototype.shouldProcessUrl = function (url) {
-        var result = url.toString().startsWith("/stocks") ||
-            url.toString().startsWith("/Dashboard") ||
-            url.toString().startsWith("/Manage");
-        console.log("[strategy.shouldProcessUrl] " + url + " " + result);
+        var result = url.toString().startsWith("/stocks");
+        console.log("[strategy.shouldProcessUrl] " + url.toString() + " " + result);
         return result;
     };
     Ng1Ng2UrlHandlingStrategy.prototype.extract = function (url) {
-        console.log("[strategy.extract] " + url);
+        console.log("[strategy.extract] " + url.toString());
         return url;
     };
     Ng1Ng2UrlHandlingStrategy.prototype.merge = function (url, whole) {
-        console.log("[strategy.merge] " + url + " whole:" + whole);
+        console.log("[strategy.merge] " + url.toString() + " whole:" + whole.toString());
         return url;
     };
     return Ng1Ng2UrlHandlingStrategy;
@@ -46,14 +53,15 @@ function routeParamsFactory(injector) {
 }
 exports.routeParamsFactory = routeParamsFactory;
 var RootComponent = (function () {
-    function RootComponent() {
+    function RootComponent(router) {
+        this.router = router;
     }
     RootComponent = __decorate([
         core_1.Component({
             selector: "root-cmp",
-            template: "\n        <div class=\"mdl-layout mdl-js-layout mdl-layout--fixed-header\">\n        <header class=\"mdl-layout__header\">\n        <div class=\"mdl-layout__header-row\">\n            <span class=\"mdl-layout-title\">Ng1 and Ng2 Apps </span>\n            <div class=\"mdl-layout-spacer\"></div>\n            <nav class=\"mdl-navigation mdl-layout--large-screen-only\">\n            <a class=\"mdl-navigation__link\" [routerLink]=\"['/phones']\">Phones(Ng1)</a>\n            <a class=\"mdl-navigation__link\" [routerLink]=\"['/stocks']\">Stocks(Ng2)</a>\n            </nav>\n        </div>\n        </header>\n        <main class=\"mdl-layout__content\" style=\"padding: 20px;\">\n            <router-outlet></router-outlet>\n            <div class=\"ng-view\"></div>\n        </main>\n    </div>\n        \n    "
+            template: "\n        <div class=\"mdl-layout mdl-js-layout mdl-layout--fixed-header\">\n        <header class=\"mdl-layout__header\">\n        <div class=\"mdl-layout__header-row\">\n            <span class=\"mdl-layout-title\">Ng1 and Ng2 Apps </span>\n            <div class=\"mdl-layout-spacer\"></div>\n            <nav class=\"mdl-navigation mdl-layout--large-screen-only\">\n            <a class=\"mdl-navigation__link\" routerLink=\"/phones\">Phones(Ng1-routerLink)</a>\n            <a class=\"mdl-navigation__link\" routerLink=\"/stocks\">Stocks(Ng2-routerLink)</a>\n            <a class=\"mdl-navigation__link\" href=\"/#/phones\">Phones(Ng1-href)</a>\n            <a class=\"mdl-navigation__link\" href=\"/#/stocks\">Stocks(Ng2-href)</a>\n            </nav>\n        </div>\n        </header>\n        <main class=\"mdl-layout__content\" style=\"padding: 20px;\">\n            <router-outlet></router-outlet>\n            <div class=\"ng-view\"></div>\n        </main>\n    </div>\n        \n    "
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.Router])
     ], RootComponent);
     return RootComponent;
 }());
@@ -78,6 +86,9 @@ var AppModule = (function () {
                 forms_1.FormsModule,
                 router_1.RouterModule,
                 static_1.UpgradeModule,
+                app_module_ng1_1.PhonecatAppNg2Module,
+                phone_list_module_1.PhoneListNg2Module,
+                phone_detail_module_1.PhoneDetailNg2Module,
                 // StocksChildAppModule,
                 router_1.RouterModule.forRoot([
                     {

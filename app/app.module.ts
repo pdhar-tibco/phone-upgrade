@@ -1,16 +1,19 @@
 
-import * as angular from "angular";
+
+import * as angular from "angular"; ``;
 import { NgModule, ApplicationRef, Component } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { HttpModule } from "@angular/http";
 import { FormsModule } from "@angular/forms";
-import { Router, RouterModule, UrlHandlingStrategy, UrlTree } from "@angular/router";
+import { Router, RouterModule, UrlHandlingStrategy, UrlTree, UrlSerializer, DefaultUrlSerializer } from "@angular/router";
 import { UpgradeModule } from "@angular/upgrade/static";
 // Phones
 // import { PhoneListComponent } from "./phone-list/phone-list.component";
 // import { PhoneDetailComponent } from "./phone-detail/phone-detail.component";
 // import { CheckmarkPipe } from "./core/checkmark/checkmark.pipe";
-import {PhonecatAppModule} from "./app.module.ng1";
+import {PhonecatAppModule, PhonecatAppNg2Module} from "./app.module.ng1";
+import { PhoneDetailNg2Module } from "./phone-detail/phone-detail.module";
+import { PhoneListNg2Module } from "./phone-list/phone-list.module";
 // Stocks
 import { StockApp } from "stocks/client/components/app";
 import { Manage } from "stocks/client/components/manage";
@@ -32,19 +35,20 @@ console.log("[app.module.ts]");
 // Using it we can tell the Angular 2 router to handle only URL starting with settings.
 export class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
 
+    private serializer: UrlSerializer = new DefaultUrlSerializer();
+
+
   shouldProcessUrl(url: UrlTree): boolean {
-      let result = url.toString().startsWith("/stocks") ||
-      url.toString().startsWith("/Dashboard") ||
-      url.toString().startsWith("/Manage");
-      console.log("[strategy.shouldProcessUrl] " + url + " " + result);
+      let result = url.toString().startsWith("/stocks");
+      console.log("[strategy.shouldProcessUrl] " + url.toString() + " " + result);
       return result;
     }
   extract(url: UrlTree): UrlTree {
-      console.log("[strategy.extract] " + url);
+      console.log("[strategy.extract] " + url.toString());
       return url;
   }
   merge(url: UrlTree, whole: UrlTree): UrlTree {
-      console.log("[strategy.merge] " + url + " whole:" + whole);
+      console.log("[strategy.merge] " + url.toString() + " whole:" + whole.toString());
       return url;
   }
 }
@@ -62,8 +66,10 @@ export function routeParamsFactory(injector: angular.auto.IInjectorService) {
             <span class="mdl-layout-title">Ng1 and Ng2 Apps </span>
             <div class="mdl-layout-spacer"></div>
             <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a class="mdl-navigation__link" [routerLink]="['/phones']">Phones(Ng1)</a>
-            <a class="mdl-navigation__link" [routerLink]="['/stocks']">Stocks(Ng2)</a>
+            <a class="mdl-navigation__link" routerLink="/phones">Phones(Ng1-routerLink)</a>
+            <a class="mdl-navigation__link" routerLink="/stocks">Stocks(Ng2-routerLink)</a>
+            <a class="mdl-navigation__link" href="/#/phones">Phones(Ng1-href)</a>
+            <a class="mdl-navigation__link" href="/#/stocks">Stocks(Ng2-href)</a>
             </nav>
         </div>
         </header>
@@ -75,7 +81,10 @@ export function routeParamsFactory(injector: angular.auto.IInjectorService) {
         
     `
 })
-export class RootComponent {}
+export class RootComponent {
+    constructor(private router: Router) {
+    }
+}
 
 @NgModule({
     imports: [
@@ -84,9 +93,12 @@ export class RootComponent {}
         FormsModule,
         RouterModule,
         UpgradeModule,
+        PhonecatAppNg2Module,
+        PhoneListNg2Module,
+        PhoneDetailNg2Module,
         // StocksChildAppModule,
         RouterModule.forRoot([
-            {   // Enable lazy loading for the stocks application
+            {
                 path: "",
                 loadChildren: "stocks/client/components/app.module.child"
             }

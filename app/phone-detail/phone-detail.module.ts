@@ -1,5 +1,6 @@
 "use strict";
 import * as angular from "angular";
+import { NgModule } from "@angular/core";
 import {CorePhoneModule} from "../core/phone/phone.module";
 import {PhoneDetailController} from "./phone-detail.component";
 // Define the `phoneDetail` module
@@ -31,3 +32,6 @@ PhoneDetailModule.config(($routeProvider) => {
           template: "<phone-detail></phone-detail>"
         });
 });
+
+@NgModule({})
+export class PhoneDetailNg2Module {}

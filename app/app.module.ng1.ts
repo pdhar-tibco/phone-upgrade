@@ -27,10 +27,11 @@ export const PhonecatAppModule = angular.module("phonecatApp", [
 ]);
 PhonecatAppModule.config(($routeProvider: angular.route.IRouteProvider) => {
     $routeProvider.when("/", { redirectTo: "/phones"});
+    // $routeProvider.when("/", { template: "<phone-list></phone-list>"});
 });
 
 @NgModule({})
-export class MenuNgModule {}
+export class PhonecatAppNg2Module {}
 
 
 
