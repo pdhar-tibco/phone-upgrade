@@ -15,6 +15,7 @@ var phone_list_module_1 = require("./phone-list/phone-list.module");
 var phone_detail_module_1 = require("./phone-detail/phone-detail.module");
 var core_module_1 = require("./core/core.module");
 var core_1 = require("@angular/core");
+var app_animations_1 = require("./app.animations");
 // declare var angular: angular.IAngularStatic;
 "use strict";
 console.log("[app.module.ng1.ts]");
@@ -32,6 +33,8 @@ exports.PhonecatAppModule.config(function ($routeProvider) {
     $routeProvider.when("/", { redirectTo: "/phones" });
     // $routeProvider.when("/", { template: "<phone-list></phone-list>"});
 });
+exports.PhonecatAppModule.
+    animation(".phone", app_animations_1.phoneAnimationFactory);
 var PhonecatAppNg2Module = (function () {
     function PhonecatAppNg2Module() {
     }

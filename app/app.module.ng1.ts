@@ -5,6 +5,7 @@ import {PhoneListModule} from "./phone-list/phone-list.module";
 import {PhoneDetailModule} from "./phone-detail/phone-detail.module";
 import {CoreModule} from "./core/core.module";
 import {NgModule} from "@angular/core";
+import { phoneAnimationFactory } from "./app.animations";
 
 // declare var angular: angular.IAngularStatic;
 
@@ -29,6 +30,9 @@ PhonecatAppModule.config(($routeProvider: angular.route.IRouteProvider) => {
     $routeProvider.when("/", { redirectTo: "/phones"});
     // $routeProvider.when("/", { template: "<phone-list></phone-list>"});
 });
+
+PhonecatAppModule.
+  animation(".phone",phoneAnimationFactory);
 
 @NgModule({})
 export class PhonecatAppNg2Module {}

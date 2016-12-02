@@ -16,10 +16,10 @@ var Phone = (function () {
         this.http = http;
     }
     Phone.prototype.query = function () {
-        return this.http.get("phones/phones.json").map(function (res) { return res.json(); });
+        return this.http.get("app/phones/phones.json").map(function (res) { return res.json(); });
     };
     Phone.prototype.get = function (id) {
-        return this.http.get("phones/" + id + ".json").map(function (res) { return res.json(); });
+        return this.http.get("app/phones/" + id + ".json").map(function (res) { return res.json(); });
     };
     Phone = __decorate([
         core_1.Injectable(), 

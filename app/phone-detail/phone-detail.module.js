@@ -20,7 +20,7 @@ exports.PhoneDetailModule = angular.module("phoneDetail", [
 // Register `phoneDetail` component, along with its associated controller and template
 // export const PhoneDetailModule = angular.  module("phoneDetail");
 exports.PhoneDetailModule.component("phoneDetail", {
-    templateUrl: "phone-detail/phone-detail.template.html",
+    templateUrl: "app/phone-detail/phone-detail.template.html",
     controller: phone_detail_component_1.PhoneDetailController
 });
 exports.PhoneDetailModule.config(function ($routeProvider) {

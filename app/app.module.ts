@@ -66,8 +66,8 @@ export function routeParamsFactory(injector: angular.auto.IInjectorService) {
             <span class="mdl-layout-title">Ng1 and Ng2 Apps </span>
             <div class="mdl-layout-spacer"></div>
             <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a class="mdl-navigation__link" routerLink="/phones">Phones(Ng1-routerLink)</a>
-            <a class="mdl-navigation__link" routerLink="/stocks">Stocks(Ng2-routerLink)</a>
+            <a class="mdl-navigation__link" routerLink="../phones">Phones(Ng1-routerLink)</a>
+            <a class="mdl-navigation__link" routerLink="../stocks">Stocks(Ng2-routerLink)</a>
             <a class="mdl-navigation__link" href="/#/phones">Phones(Ng1-href)</a>
             <a class="mdl-navigation__link" href="/#/stocks">Stocks(Ng2-href)</a>
             </nav>

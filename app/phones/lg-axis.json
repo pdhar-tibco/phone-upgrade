@@ -42,9 +42,9 @@
     }, 
     "id": "lg-axis", 
     "images": [
-        "img/phones/lg-axis.0.jpg", 
-        "img/phones/lg-axis.1.jpg", 
-        "img/phones/lg-axis.2.jpg"
+        "app/img/phones/lg-axis.0.jpg", 
+        "app/img/phones/lg-axis.1.jpg", 
+        "app/img/phones/lg-axis.2.jpg"
     ], 
     "name": "LG Axis", 
     "sizeAndWeight": {

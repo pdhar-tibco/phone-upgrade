@@ -16,11 +16,11 @@ export class Phone {
   }
 
   query(): Observable<PhoneData[]> {
-      return this.http.get(`phones/phones.json`).map((res: Response) => res.json());
+      return this.http.get(`app/phones/phones.json`).map((res: Response) => res.json());
   }
 
   get(id: string): Observable<PhoneData> {
-    return this.http.get(`phones/${id}.json`).map((res: Response) => res.json());
+    return this.http.get(`app/phones/${id}.json`).map((res: Response) => res.json());
   }
 
 }
