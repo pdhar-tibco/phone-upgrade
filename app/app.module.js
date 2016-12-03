@@ -23,7 +23,9 @@ var app_module_ng1_1 = require("./app.module.ng1");
 var phone_detail_module_1 = require("./phone-detail/phone-detail.module");
 var phone_list_module_1 = require("./phone-list/phone-list.module");
 var phone_service_1 = require("./core/phone/phone.service");
-var cssContent = require("stocks/client/css/app.css");
+// import  StocksChildAppModule  from "stocks/client/components/app.module.child";
+// import {APP_BASE_HREF} from "@angular/common";
+// let cssContent = require("stocks/client/css/app.css");
 // declare var angular: angular.IAngularStatic;
 console.log("[app.module.ts]");
 // This URL handling strategy is custom and application-specific.

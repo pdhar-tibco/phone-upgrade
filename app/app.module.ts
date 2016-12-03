@@ -11,7 +11,7 @@ import { UpgradeModule } from "@angular/upgrade/static";
 // import { PhoneListComponent } from "./phone-list/phone-list.component";
 // import { PhoneDetailComponent } from "./phone-detail/phone-detail.component";
 // import { CheckmarkPipe } from "./core/checkmark/checkmark.pipe";
-import {PhonecatAppModule, PhonecatAppNg2Module} from "./app.module.ng1";
+import {PhonecatAppNg2Module} from "./app.module.ng1";
 import { PhoneDetailNg2Module } from "./phone-detail/phone-detail.module";
 import { PhoneListNg2Module } from "./phone-list/phone-list.module";
 // Stocks
@@ -23,9 +23,9 @@ import { Phone } from "./core/phone/phone.service";
 // import  StocksChildAppModule  from "stocks/client/components/app.module.child";
 
 
-import {APP_BASE_HREF} from "@angular/common";
+// import {APP_BASE_HREF} from "@angular/common";
 
-let cssContent = require("stocks/client/css/app.css");
+// let cssContent = require("stocks/client/css/app.css");
 
 // declare var angular: angular.IAngularStatic;
 
